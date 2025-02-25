@@ -1095,6 +1095,20 @@
         },
         "optional": true
       },
+      "heading": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "subheading": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "pageBuilder": {
         "type": "objectAttribute",
         "value": {

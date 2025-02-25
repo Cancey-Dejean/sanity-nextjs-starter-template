@@ -174,6 +174,8 @@ export type Page = {
   _rev: string;
   name?: string;
   slug?: Slug;
+  heading?: string;
+  subheading?: string;
   pageBuilder?: Array<
     | ({
         _key: string;
@@ -341,8 +343,8 @@ export type GetPageQueryResult = {
   _type: "page";
   name: string | null;
   slug: Slug | null;
-  heading: null;
-  subheading: null;
+  heading: string | null;
+  subheading: string | null;
   pageBuilder: Array<
     | {
         _key: string;
