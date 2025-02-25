@@ -13,7 +13,7 @@ import {
   type PortableTextComponents,
   type PortableTextBlock,
 } from "next-sanity";
-import ResolvedLink from "./resolved-link";
+import ResolvedLink from "./ResolvedLink";
 
 export default function CustomPortableText({
   className,

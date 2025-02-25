@@ -6,7 +6,7 @@ import Link from "next/link";
 import BlockRenderer from "@/utils/block-renderer";
 import { dataAttr } from "@/sanity/lib/utils";
 import { studioUrl } from "@/sanity/env";
-import { GetPageQueryResult } from "../../sanity.types";
+import { GetPageQueryResult } from "../../../sanity.types";
 import Container from "@/components/container";
 
 type PageBuilderPageProps = {

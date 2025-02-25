@@ -1,4 +1,4 @@
-import ResolvedLink from "@/components/resolved-link";
+import ResolvedLink from "@/components/sanity/ResolvedLink";
 import { Suspense } from "react";
 import { CallToAction } from "../../../../sanity.types";
 

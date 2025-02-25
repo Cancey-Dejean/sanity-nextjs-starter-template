@@ -14,6 +14,7 @@ import { media } from "sanity-plugin-media";
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schema } from "./src/sanity/schemaTypes";
 import { structure } from "./src/sanity/structure";
+import { presentationTool } from "sanity/presentation";
 
 export default defineConfig({
   basePath: "/studio",
@@ -23,10 +24,19 @@ export default defineConfig({
   schema,
   plugins: [
     structureTool({ structure }),
-    unsplashImageAsset(),
-    media(),
+
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
+    presentationTool({
+      previewUrl: {
+        preview: "/",
+        previewMode: {
+          enable: "/api/draft-mode/enable",
+        },
+      },
+    }),
+    unsplashImageAsset(),
+    media(),
   ],
 });
