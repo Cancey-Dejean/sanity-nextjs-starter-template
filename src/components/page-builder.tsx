@@ -3,11 +3,11 @@
 import { SanityDocument } from "next-sanity";
 import { useOptimistic } from "next-sanity/hooks";
 import Link from "next/link";
-
-import BlockRenderer from "@/app/components/BlockRenderer";
-import { GetPageQueryResult } from "@/sanity.types";
+import BlockRenderer from "@/utils/block-renderer";
 import { dataAttr } from "@/sanity/lib/utils";
-import { studioUrl } from "@/sanity/lib/api";
+import { studioUrl } from "@/sanity/env";
+import { GetPageQueryResult } from "../../sanity.types";
+import Container from "@/components/container";
 
 type PageBuilderPageProps = {
   page: GetPageQueryResult;
@@ -61,7 +61,7 @@ function renderEmptyState(page: GetPageQueryResult) {
     return null;
   }
   return (
-    <div className="container">
+    <Container className="flex flex-col items-center justify-center">
       <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
         This page has no content!
       </h1>
@@ -78,7 +78,7 @@ function renderEmptyState(page: GetPageQueryResult) {
           Add content to this page
         </Link>
       </div>
-    </div>
+    </Container>
   );
 }
 

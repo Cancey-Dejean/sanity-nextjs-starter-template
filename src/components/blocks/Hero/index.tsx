@@ -1,5 +1,5 @@
 import Heading from "@/components/ui/Heading";
-import Container from "@/components/ui/Container";
+import Container from "@/components/container";
 
 export default function Hero() {
   return (

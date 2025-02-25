@@ -1,7 +1,7 @@
 import React from "react";
 
 import Link from "next/link";
-import Container from "@/components/ui/Container";
+import Container from "@/components/container";
 import { Button } from "@/components/ui/Button";
 
 export default function PageNotFound({

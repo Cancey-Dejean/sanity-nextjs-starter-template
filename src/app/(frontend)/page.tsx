@@ -1,6 +1,6 @@
 import Hero from "@/components/blocks/Hero";
 import GetStartedCode from "@/components/_demo/GetStartedCode";
-import Container from "@/components/ui/Container";
+import Container from "@/components/container";
 import Link from "next/link";
 import { Suspense } from "react";
 

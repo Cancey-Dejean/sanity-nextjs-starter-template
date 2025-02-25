@@ -1,11 +1,12 @@
 import { type SchemaTypeDefinition } from "sanity";
 import { pageType } from "./documents/pageType";
 import { blockContentType } from "./objects/blockContentType";
-import { infoSection } from "./blocks/infoSection";
-import { callToAction } from "./blocks/callToAction";
-import { linkType } from "./objects/linkType";
-import { postType } from "./documents/postType";
-import { authorType } from "./documents/authorType";
+
+import { linkType } from "@/sanity/schemaTypes/objects/linkType";
+import { postType } from "@/sanity/schemaTypes/documents/postType";
+import { authorType } from "@/sanity/schemaTypes/documents/authorType";
+import { infoSection } from "@/components/blocks/Info/schema";
+import { callToAction } from "@/components/blocks/CTA/schema";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -16,8 +17,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     // Objects
     blockContentType,
+    linkType,
+
+    // Blocks
     infoSection,
     callToAction,
-    linkType,
   ],
 };

@@ -29,17 +29,17 @@ export const pageType = defineType({
         maxLength: 96,
       },
     }),
-    // defineField({
-    //   name: 'heading',
-    //   title: 'Heading',
-    //   type: 'string',
-    //   validation: (Rule) => Rule.required(),
-    // }),
-    // defineField({
-    //   name: 'subheading',
-    //   title: 'Subheading',
-    //   type: 'string',
-    // }),
+    defineField({
+      name: "heading",
+      title: "Heading",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "subheading",
+      title: "Subheading",
+      type: "string",
+    }),
     defineField({
       name: "pageBuilder",
       title: "Page builder",

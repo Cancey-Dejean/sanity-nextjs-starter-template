@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Head from "next/head";
 
-import PageBuilderPage from "@/app/components/PageBuilder";
+import PageBuilderPage from "@/components/page-builder";
 import { sanityFetch } from "@/sanity/lib/live";
+import { PageOnboarding } from "@/components/_demo/Onboarding";
+import { GetPageQueryResult } from "../../../../sanity.types";
 import { getPageQuery, pagesSlugs } from "@/sanity/lib/queries";
-import { GetPageQueryResult } from "@/sanity.types";
-import { PageOnboarding } from "@/app/components/Onboarding";
+import Container from "@/components/container";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -63,20 +64,18 @@ export default async function Page(props: Props) {
       <Head>
         <title>{page.heading}</title>
       </Head>
-      <div className="">
-        <div className="container">
-          <div className="border-b border-gray-100 pb-6">
-            <div className="max-w-3xl">
-              <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-7xl">
-                {page.heading}
-              </h2>
-              <p className="mt-4 text-base leading-relaxed font-light text-gray-600 uppercase lg:text-lg">
-                {page.subheading}
-              </p>
-            </div>
+      <Container>
+        <div className="border-b border-gray-100 pb-6">
+          <div className="max-w-3xl">
+            <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-7xl">
+              {page.heading}
+            </h2>
+            <p className="mt-4 text-base leading-relaxed font-light text-gray-600 uppercase lg:text-lg">
+              {page.subheading}
+            </p>
           </div>
         </div>
-      </div>
+      </Container>
       <PageBuilderPage page={page as GetPageQueryResult} />
     </div>
   );
