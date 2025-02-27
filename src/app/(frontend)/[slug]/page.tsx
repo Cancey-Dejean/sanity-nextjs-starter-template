@@ -65,7 +65,7 @@ export default async function Page(props: Props) {
         <title>{page.heading}</title>
       </Head>
       <Container>
-        <div className="border-b border-gray-100 pb-6">
+        <div className="mb-20 border-b border-gray-100 pb-6">
           <div className="max-w-3xl">
             <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-7xl">
               {page.heading}
@@ -76,6 +76,7 @@ export default async function Page(props: Props) {
           </div>
         </div>
       </Container>
+
       <PageBuilderPage page={page as GetPageQueryResult} />
     </div>
   );

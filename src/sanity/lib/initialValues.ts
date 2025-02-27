@@ -2,6 +2,8 @@
  * Demo data used as placeholders and initial values for the blog
  */
 
+export const logo = "/images/logo.png";
+
 export const title = "Website Template.";
 
 export const description = [

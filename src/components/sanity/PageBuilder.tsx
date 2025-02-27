@@ -8,6 +8,7 @@ import { dataAttr } from "@/sanity/lib/utils";
 import { studioUrl } from "@/sanity/env";
 import { GetPageQueryResult } from "../../../sanity.types";
 import Container from "@/components/container";
+import { Button } from "../ui/Button";
 
 type PageBuilderPageProps = {
   page: GetPageQueryResult;
@@ -69,14 +70,13 @@ function renderEmptyState(page: GetPageQueryResult) {
         Open the page in Sanity Studio to add content.
       </p>
       <div className="mt-10 flex">
-        <Link
-          className="mr-6 flex items-center gap-2 rounded-full bg-black px-6 py-3 text-white transition-colors duration-200 hover:bg-red-500 focus:bg-cyan-500"
-          href={`${studioUrl}/structure/intent/edit/template=page;type=page;path=pageBuilder;id=${page._id}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Add content to this page
-        </Link>
+        <Button asChild>
+          <Link
+            href={`${studioUrl}/structure/intent/edit/template=page;type=page;path=pageBuilder;id=${page._id}`}
+          >
+            Add content to this page
+          </Link>
+        </Button>
       </div>
     </Container>
   );

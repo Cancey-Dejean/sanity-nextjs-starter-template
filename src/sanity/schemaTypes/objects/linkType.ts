@@ -42,6 +42,20 @@ export const linkType = defineType({
         }),
     }),
     defineField({
+      name: "label",
+      title: "Label",
+      type: "string",
+      hidden: ({ parent }) => parent?.linkType !== "href",
+      validation: (Rule) =>
+        // Custom validation to ensure URL is provided if the link type is 'href'
+        Rule.custom((value, context: any) => {
+          if (context.parent?.linkType === "href" && !value) {
+            return "Label is required when Link Type is Label";
+          }
+          return true;
+        }),
+    }),
+    defineField({
       name: "page",
       title: "Page",
       type: "reference",
@@ -78,4 +92,39 @@ export const linkType = defineType({
       initialValue: false,
     }),
   ],
+  preview: {
+    select: {
+      linkType: "linkType",
+      label: "label",
+      href: "href",
+      pageName: "page.name",
+      pageSlug: "page.slug.current",
+      postTitle: "post.title",
+      postSlug: "post.slug.current",
+    },
+    prepare(selection) {
+      const { linkType, label, href, pageName, pageSlug, postTitle, postSlug } =
+        selection;
+
+      let title = "No title";
+      let subtitle = "";
+
+      if (linkType === "href" && label) {
+        title = label;
+        subtitle = href ? `${href}` : "External link";
+      } else if (linkType === "page" && pageName) {
+        title = pageName;
+        subtitle = `/${pageSlug || ""}`;
+      } else if (linkType === "post" && postTitle) {
+        title = postTitle;
+        subtitle = `/posts/${postSlug || ""}`;
+      }
+
+      return {
+        title,
+        subtitle,
+        media: LinkIcon,
+      };
+    },
+  },
 });

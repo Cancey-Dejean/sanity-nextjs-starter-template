@@ -68,6 +68,35 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Header = {
+  _id: string;
+  _type: "header";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  logo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  primaryMenu?: Array<
+    {
+      _key: string;
+    } & Link
+  >;
+  secondaryMenu?: Array<
+    {
+      _key: string;
+    } & Link
+  >;
+};
+
 export type CallToAction = {
   _type: "callToAction";
   heading?: string;
@@ -118,6 +147,7 @@ export type Link = {
   _type: "link";
   linkType?: "href" | "page" | "post";
   href?: string;
+  label?: string;
   page?: {
     _ref: string;
     _type: "reference";
@@ -317,6 +347,7 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | Header
   | CallToAction
   | InfoSection
   | Link
@@ -356,6 +387,7 @@ export type GetPageQueryResult = {
           _type: "link";
           linkType?: "href" | "page" | "post";
           href?: string;
+          label?: string;
           page: string | null;
           post: string | null;
           openInNewTab?: boolean;
@@ -560,6 +592,51 @@ export type PagesSlugsResult = Array<{
   slug: string | null;
 }>;
 
+// Source: ./src/sanity/lib/queries/header.ts
+// Variable: getHeaderQuery
+// Query: *[_type == "header"][0] {    logo,      primaryMenu [] {      href,      label,      page->{_id, title, slug},      post->{_id, title, slug}    },    secondaryMenu [] {      href,      label,      page->{_id, title, slug},      post->{_id, title, slug}    }  }
+export type GetHeaderQueryResult = {
+  logo: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  primaryMenu: Array<{
+    href: string | null;
+    label: string | null;
+    page: {
+      _id: string;
+      title: null;
+      slug: Slug | null;
+    } | null;
+    post: {
+      _id: string;
+      title: string | null;
+      slug: Slug | null;
+    } | null;
+  }> | null;
+  secondaryMenu: Array<{
+    href: string | null;
+    label: string | null;
+    page: {
+      _id: string;
+      title: null;
+      slug: Slug | null;
+    } | null;
+    post: {
+      _id: string;
+      title: string | null;
+      slug: Slug | null;
+    } | null;
+  }> | null;
+} | null;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -572,5 +649,6 @@ declare module "@sanity/client" {
     '\n  *[_type == "post" && slug.current == $slug] [0] {\n    content[]{\n    ...,\n    markDefs[]{\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n    }\n  },\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': PostQueryResult;
     '\n  *[_type == "post" && defined(slug.current)]\n  {"slug": slug.current}\n': PostPagesSlugsResult;
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult;
+    '*[_type == "header"][0] {\n    logo,\n      primaryMenu [] {\n      href,\n      label,\n      page->{_id, title, slug},\n      post->{_id, title, slug}\n    },\n    secondaryMenu [] {\n      href,\n      label,\n      page->{_id, title, slug},\n      post->{_id, title, slug}\n    }\n  }': GetHeaderQueryResult;
   }
 }

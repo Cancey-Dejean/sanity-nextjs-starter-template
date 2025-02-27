@@ -59,6 +59,9 @@ importers:
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
+      groq:
+        specifier: ^3.77.2
+        version: 3.77.2
       lucide-react:
         specifier: ^0.453.0
         version: 0.453.0(react@19.0.0)
@@ -4901,6 +4904,10 @@ packages:
 
   groq@3.76.3:
     resolution: {integrity: sha512-2lK7USo8dlp9DPePcdGohnMdynTF9tGXkoyus/q4AY77+vOmcC/kdEYb9n6H0OqG1b9hSM/fONMez58VwnRgkw==}
+    engines: {node: '>=18'}
+
+  groq@3.77.2:
+    resolution: {integrity: sha512-cuyOru3Bu2zdp+5MXGa9NBohhD028ykEaURByvY45VA0+rF3aTLMkzGpcyogAzoLQJGD8m2yB+uLZA58XhSHWw==}
     engines: {node: '>=18'}
 
   gunzip-maybe@1.4.2:
@@ -13703,6 +13710,8 @@ snapshots:
 
   groq@3.76.3: {}
 
+  groq@3.77.2: {}
+
   gunzip-maybe@1.4.2:
     dependencies:
       browserify-zlib: 0.1.4
@@ -14607,7 +14616,7 @@ snapshots:
       '@sanity/types': 3.76.3(@types/react@19.0.7)(debug@4.4.0)
       '@sanity/ui': 2.14.1(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react-is@18.3.1)(react@19.0.0)(styled-components@6.1.15(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@sanity/visual-editing': 2.13.5(@emotion/is-prop-valid@1.2.2)(@sanity/client@6.28.1)(@sanity/types@3.76.3(@types/react@19.0.7)(debug@4.4.0))(next@15.1.6(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react-is@18.3.1)(react@19.0.0)(styled-components@6.1.15(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
-      groq: 3.76.3
+      groq: 3.77.2
       history: 5.3.0
       next: 15.1.6(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
@@ -15782,7 +15791,7 @@ snapshots:
       copy-to-clipboard: 3.3.3
       date-fns: 2.30.0
       filesize: 9.0.11
-      groq: 3.76.3
+      groq: 3.77.2
       is-hotkey: 0.2.0
       nanoid: 3.3.8
       npm-run-all: 4.1.5

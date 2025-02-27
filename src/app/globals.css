@@ -155,6 +155,10 @@
   body {
     @apply bg-background text-foreground mx-auto antialiased;
   }
+
+  button {
+    @apply cursor-pointer;
+  }
 }
 
 /* Storybook Styles ONLY: DO NOT DELETE */

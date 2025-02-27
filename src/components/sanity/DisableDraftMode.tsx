@@ -22,7 +22,7 @@ export function DisableDraftMode() {
   return (
     <button
       onClick={handleClick}
-      className="fixed top-1/2 right-4 z-50 -translate-y-1/2 bg-gray-50 px-4 py-2 text-black"
+      className="bg-foreground text-background fixed bottom-4 left-4 z-50 px-4 py-2"
     >
       Disable Draft Mode
     </button>
