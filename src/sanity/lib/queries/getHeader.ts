@@ -1,5 +1,6 @@
 import { sanityFetch } from "../live";
 import { defineQuery } from "groq";
+import { buttonFields } from "./fragments";
 
 export async function getHeader() {
   const getHeaderQuery = defineQuery(`*[_type == "header"][0] {
@@ -11,10 +12,7 @@ export async function getHeader() {
       post->{title, "slug": slug.current}
     },
     secondaryMenu [] {
-      href,
-      label,
-      page->{name, "slug": slug.current},
-      post->{title, "slug": slug.current}
+      ${buttonFields}
     }
   }`);
 

@@ -19,7 +19,6 @@ type Props = {
 export async function generateStaticParams() {
   const { data } = await sanityFetch({
     query: pagesSlugs,
-    // // Use the published perspective in generateStaticParams
     perspective: "published",
     stega: false,
   });

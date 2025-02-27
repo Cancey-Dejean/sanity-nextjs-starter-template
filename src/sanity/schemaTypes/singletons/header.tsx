@@ -33,7 +33,8 @@ export const header = defineType({
       description: "This field is the secondary menu of your website.",
       title: "Secondary Menu",
       type: "array",
-      of: [{ type: "link" }],
+      of: [{ type: "button" }],
+      validation: (Rule) => Rule.required().min(1).max(2),
     }),
   ],
   preview: {
